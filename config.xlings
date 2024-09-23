@@ -2,3 +2,8 @@ xlings_name = "dslings"
 xlings_lang = "cpp"
 xlings_editor = "vscode"
 --xlings_llm_config = ".xlings/llm.config.xlings"
+
+---------- d2ds config
+
+-- 0: hard, 1: normal, 2: easy
+d2ds_difficulty_level = 1
