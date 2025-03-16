@@ -17,11 +17,12 @@ Dive into Data Structures - 强调**动手实践**的**数据结构**学习项�
 
 ## 快速开始
 
-通过使用[xlings](https://github.com/d2learn/xlings)下载项目并运行自动化检测的**编译器驱动开发模式**来进行代码练习
+> 通过使用[xlings](https://github.com/d2learn/xlings)下载项目并运行**编译器驱动开发模式**(自动化检测)来进行代码练习
 
-### xlings安装
+<details>
+  <summary>点击查看xlings安装命令</summary>
 
-> xlings工具 -> [详情](https://d2learn.org/xlings)
+---
 
 #### Linux
 
@@ -35,60 +36,40 @@ curl -fsSL https://d2learn.org/xlings-install.sh | bash
 Invoke-Expression (Invoke-Webrequest 'https://d2learn.org/xlings-install.ps1.txt' -UseBasicParsing).Content
 ```
 
-### 获取项目并使用
+> 注: xlings包含所需的xim和d2x工具 -> [详情](https://d2learn.org/xlings)
 
-#### 下载项目
+---
 
-使用xlings工具下载
+</details>
+
+### 获取项目&配置环境
+
+> 下载d2ds项目到当前目录并自动配置本地环境
 
 ```bash
-xlings drepo d2ds
+xim -i d2x::d2ds
 ```
 
-或直接使用git克隆
+### 基本用法
+
+> 使用d2x命令查看电子书或进行代码练习
+
+#### 打开电子书/项目文档
 
 ```bash
-git clone --recursive git@github.com:d2learn/d2ds.git
+d2x book
 ```
 
-#### 安装项目依赖
-
-> 进入项目目录运行依赖自动安装命令
+#### 进入代码练习自动检测程序
 
 ```bash
-xlings install
-```
-
-#### 执行dslings进入练习
-
-> 执行dslings开始练习
-
-```bash
-xlings dslings
-```
-
-#### 打开电子书
-
-```bash
-xlings book
+d2x checker
 ```
 
 ## 社区 | 交流
 
-### 知识库
-
-> [知识库汇总页](http://forum.d2learn.org/post/122)
-
-- 一个d2ds相关技术点解析的知识库
-- 统一的汇总页, 便于查找
-- 降低d2ds的上手难度, 和帮助使用者理解
-- 技术/环境搭建及项目常见问题汇总
-- ShowYourCode-2024
-
-### 交流渠道
-
 - **即时交流(QQ群):** 167535744
-- **问题交流&讨论:** [d2ds论坛](https://forum.d2learn.org/category/6/d2ds-%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
+- **问题交流&讨论:** [d2ds论坛版块](https://forum.d2learn.org/category/6)
 - **Bug反馈&功能改善:** [github-issues](https://github.com/d2learn/d2ds/issues)
 
 ## 参与项目 | 社区贡献
