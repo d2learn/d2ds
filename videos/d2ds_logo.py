@@ -23,8 +23,8 @@ class D2DSLogo(Scene):
         node_d_copy2 = node_d.copy()
 
         self.play(
-            Transform(node_d_copy1, node_s),
-            Transform(node_d_copy2, node_data),
+            ReplacementTransform(node_d_copy1, node_s),
+            ReplacementTransform(node_d_copy2, node_data),
             FadeIn(VGroup(link_d_to_data, link_data_to_d))
         )
 
@@ -41,19 +41,14 @@ class D2DSLogo(Scene):
         link_d_to_2 = DNodeLink(node_d, node_2).set_color(PURE_GREEN)
 
         self.play(
-            Transform(link_d_to_data, link_d_to_2),
-            Transform(link_data_to_d, link_data_to_2),
+            ReplacementTransform(link_d_to_data, link_d_to_2),
+            ReplacementTransform(link_data_to_d, link_data_to_2),
         )
 
         # fadeout all
         self.play(
+            FadeOut(VGroup(node_d, node_2, node_data, node_s)),
             FadeOut(VGroup(
-                node_d, node_2, node_data, node_s,
-                node_d_copy1, node_d_copy2
-            )),
-            FadeOut(VGroup(
-                link_d_to_data,
-                link_data_to_d,
                 link_2_to_d,
                 link_2_to_data,
                 link_data_to_2,

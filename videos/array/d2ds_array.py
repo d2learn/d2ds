@@ -10,11 +10,36 @@ from libs import *
 
 class D2DSArray(Scene):
     def construct(self):
-        self.start_scene()
+
+        contents = DContents([
+            "0.基本概念",
+            "1.数组索引",
+            "2.内存布局",
+            "3.操作&应用",
+        ]).arrange(DOWN, aligned_edge=LEFT).to_edge(RIGHT + UP)
+
+        contents.scale(0.5)
+
+        self.play(Create(contents))
+
+        self.play(contents.anim_next_chapter())
         self.wait(1)
 
+        # 1. topic enter
+        #self.start_scene()
+        self.wait(1)
+
+        # 
+
+    def base(self, array):
+
+        # index
+
+        # memory
+        return
+
     def start_scene(self):
-        text = Text("你第一个接触的数据结构是什么？")
+        text = Text("你学习的第一个数据结构是什么？")
         self.play(Write(text), run_time=1)
         self.wait(1)
 
