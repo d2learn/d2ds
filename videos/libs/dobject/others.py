@@ -1,5 +1,7 @@
 from manim import *
 
+from .base import DElement
+
 class DContents(VGroup):
 
     def __init__(self, contents, **kwargs):
@@ -39,3 +41,25 @@ class DContents(VGroup):
         s.set_color(YELLOW)
         s.set_opacity(0.15)
         return s
+
+class DMemory(VGroup):
+
+    def __init__(self, values, addrs=[], **kwargs):
+        super().__init__(**kwargs)
+
+        self.mem = VGroup()
+        for value in values:
+            element = DElement(value, width=1.5, height=0.5, color=PURPLE)
+            element.box.set_fill(color=WHITE, opacity=0.2)
+            self.mem.add(element)
+        self.mem.arrange(DOWN, buff=0)
+
+        addr_font_size = self.mem[0].text.font_size / 2
+        self.addr_list = VGroup()
+        for i, addr in enumerate(addrs):
+            text = Text(str(addr), font_size=addr_font_size).set_color(PURE_RED)
+            text.next_to(self.mem[i], LEFT)
+            self.addr_list.add(text)
+
+        self.add(self.mem, self.addr_list)
+        self.move_to(ORIGIN)
