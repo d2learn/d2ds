@@ -47,7 +47,7 @@ Invoke-Expression (Invoke-Webrequest 'https://d2learn.org/xlings-install.ps1.txt
 > 下载d2ds项目到当前目录并自动配置本地环境
 
 ```bash
-xim -i d2x::d2ds
+xim -i d2x:d2ds
 ```
 
 ### 基本用法
