@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from libs import *
 
-class D2DSArray(Scene):
+class D2DSArrayBase(Scene):
     def construct(self):
 
         contents = DContents([
