@@ -65,7 +65,7 @@ int main() {
 
         code_dome2 = Code(code = """
 int main() {
-    Student students[4] = {
+    Student students[30] = {
         {"鸣人", 10, "男"},
         {"佐助", 11, "男"},
         {"小樱", 10, "女"},
@@ -221,7 +221,7 @@ int main() {
         sourcecode = """int arr[9] = {1, ... ,9};
 arr[4] = 2025; // ok
 arr[4] = "hello"; // error
-arr[4] = 'a'; // ?"""
+arr[4] = 'A'; // ?"""
 
         self.play(Transform(code, Code(
             code = sourcecode, language="cpp", style="emacs"
@@ -255,5 +255,5 @@ arr[4] = 'a'; // ?"""
         return arr2
 
 if __name__ == "__main__":
-    scene = D2DSArray()
+    scene = D2DSArrayBase()
     scene.render()
