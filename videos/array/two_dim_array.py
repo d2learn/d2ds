@@ -27,13 +27,13 @@ class D2DSTwoDimArray(Scene):
             ["0x0000", "0x0004", "0x0008", "0x000C", 
              "0x0010", "0x0014", "0x0018", "0x001C",
              "0x0020", "0x0024", "0x0028", "0x002C"],
-        ).move_to(RIGHT * 4).scale(0.8)
+        ).move_to(RIGHT * 5).scale(0.8)
 
         self.play(Create(one_dim_arr))
 
         self.play(
             ReplacementTransform(one_dim_arr.copy(), mem_loyout),
-            one_dim_arr.animate.move_to(LEFT * 2.5),
+            one_dim_arr.animate.move_to(LEFT * 2),
         )
 
         two_dim_array = DTwoDimArray([
@@ -57,6 +57,34 @@ class D2DSTwoDimArray(Scene):
                 run_time=0.5,
             )
 
+        arr_subscripts = two_dim_array.create_subscripts(scale=0.4, offset=1.2)
+
+        self.play(Write(arr_subscripts))
+
+        # 1. one-dim / two-dim index compute
+
+        code = Code(code = "arr2[1][1]", language="cpp").move_to(RIGHT)
+
+        select_box = SurroundingRectangle(two_dim_array[1][1], color=YELLOW, buff=0.1)
+        select_box_1 = SurroundingRectangle(one_dim_arr[4], color=YELLOW, buff=0.1)
+        select_box_2 = SurroundingRectangle(mem_loyout.mem[4], color=YELLOW, buff=0.1)
+
+        self.play(Write(code))
+        self.play(DHighlight(select_box, scale_factor=1.2))
+
+        self.play(Transform(code, Code(code = "arr2[1][1]\narr1[1*3+1]", language="cpp").move_to(code)))
+        self.play(
+            ReplacementTransform(select_box.copy(), select_box_1),
+            Transform(code, Code(code = "arr2[1][1]\narr1[4]", language="cpp").move_to(code))
+        )
+
+        self.play(ReplacementTransform(select_box_1.copy(), select_box_2))
+
+        self.play(
+            DHighlight(select_box_1, scale_factor=1.2),
+            DHighlight(select_box_2, scale_factor=1.2),
+            DHighlight(select_box, scale_factor=1.2),
+        )
 
         #self.play(Create(contents))
 
