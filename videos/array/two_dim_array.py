@@ -34,6 +34,8 @@ class D2DSTwoDimArray(Scene):
 
         self.play(Create(VGroup(one_dim_arr, one_dim_arr_title)))
 
+        self.wait()
+
         self.play(
             ReplacementTransform(one_dim_arr.copy(), mem_loyout.mem),
             VGroup(one_dim_arr, one_dim_arr_title).animate.move_to(LEFT * 2),
@@ -61,6 +63,8 @@ class D2DSTwoDimArray(Scene):
             Write(arr_subscripts),
         )
 
+        self.wait()
+
         self.play(
             FadeIn(mem_loyout.addr_list),
             Create(mem_loyout_title)
@@ -86,10 +90,10 @@ class D2DSTwoDimArray(Scene):
         self.play(Write(code))
         self.play(DHighlight(select_box, scale_factor=1.2))
 
+        self.wait()
+
         self.play(Transform(code, Code(code = "arr2[1][1]\narr1[1*3+1]", language="cpp", style="emacs").move_to(code)))
-        self.play(
-            Transform(code, Code(code = "arr2[1][1]\narr1[4]", language="cpp", style="emacs").move_to(code))
-        )
+        #self.play(Transform(code, Code(code = "arr2[1][1]\narr1[4]", language="cpp", style="emacs").move_to(code)))
 
         self.play(ReplacementTransform(select_box.copy(), select_box_r))
 
@@ -98,9 +102,13 @@ class D2DSTwoDimArray(Scene):
             DHighlight(select_box, scale_factor=1.2),
         )
 
+        self.wait()
+
         self.play(Transform(code, Code(code = "arr2[1][1]\narr1[4]\n// int (*)[3]\np = arr1", language="cpp", style="emacs").move_to(code)))
         self.wait()
         self.play(Transform(code, Code(code = "arr2[1][1]\narr1[4] // 5\n// int (*)[3]\np = arr1\np[1][1] // 5", language="cpp", style="emacs").move_to(code)))
+
+        self.wait()
 
         # 2. row/column major
         self.play(
@@ -132,11 +140,12 @@ class D2DSTwoDimArray(Scene):
                 self.play(
                     ReplacementTransform(two_dim_array[i][j].copy(), mem_loyout_col_major.mem[j * 4 + i]),
                     FadeIn(mem_loyout_col_major.addr_list[j * 4 + i]),
-                    run_time=0.25,
+                    run_time=0.2,
                 )
             self.play(
                 DHighlight(arr_highlight),
                 DHighlight(mem_highlight),
+                run_time=0.5
             )
 
         self.wait()
@@ -159,14 +168,14 @@ for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 3; j++) {
         sum += arr2[i][j];
     }
-}""", language="cpp", style="emacs").scale(0.7).shift(UP)
+}""", language="cpp", style="emacs").shift(UP * 1.5)
 
         code_c = Code(code = """// 列优先遍历
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 4; j++) {
         sum += arr2[j][i];
     }
-}""", language="cpp", style="emacs").scale(0.7).shift(DOWN)
+}""", language="cpp", style="emacs").shift(DOWN * 1.5)
 
         arr2_group = VGroup(two_dim_array, two_dim_array_title, arr_subscripts)
         mem_loyout_group = VGroup(
@@ -189,10 +198,13 @@ for (int i = 0; i < 3; i++) {
         setting_text = Code(code = """硬件信息
 // Cache/内存块大小: 3个元素
 // Cache命中: 0.1s
-// Cache未命中: 1s""", language="cpp", style="emacs").scale(0.5).to_corner(UL)
+// Cache未命中: 1s""", language="cpp", style="emacs")
 
         self.play(ReplacementTransform(VGroup(code_r, code_c), setting_text))
 
+        self.wait()
+
+        self.play(setting_text.animate.scale(0.5).to_corner(UL))
 
         # 4. performance
         two_dim_array_copy = arr2_group_copy[0]
@@ -304,7 +316,7 @@ for (int i = 0; i < 3; i++) {
 
         self.wait()
 
-        compute_time_c = Text("按列遍历: 12s").set_color(PURE_GREEN).scale(0.5).to_edge(UP)
+        compute_time_c = Text("按列遍历: 12s").set_color(ORANGE).scale(0.5).to_edge(UP)
         self.play(
             FadeOut(select_box),
             ReplacementTransform(compute_time, compute_time_c)
@@ -313,7 +325,6 @@ for (int i = 0; i < 3; i++) {
         self.play(compute_time_c.animate.next_to(compute_time_r, DOWN * 0.5))
 
         self.wait()
-
 
 if __name__ == "__main__":
     scene = D2DSTwoDimArray()
