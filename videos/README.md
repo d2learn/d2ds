@@ -5,9 +5,11 @@
 # Run
 
 ```bash
-python3 [d2ds.py]
+python [d2ds.py]
 manim -pql  [d2ds.py] [ClassName]
 ```
+
+> Note: need `pip install manim==0.18.1`
 
 # Dir
 
