@@ -3,7 +3,7 @@
 Dive into Data Structures - 强调**动手实践**的**数据结构**学习项目，其中包含**在线书籍、公开课、练习代码**等子项目
 | [主页](https://courses.d2learn.org/d2ds_course.html) - [论坛](https://forum.d2learn.org/category/6/d2ds-%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)    |
 | --- |
-| [d2ds-book](https://d2learn.github.io/d2ds) - [d2ds-video](https://courses.d2learn.org/d2ds_course.html) - [d2ds-code](dslings) - [dstruct](https://github.com/Sunrisepeak/dstruct) |
+| [d2ds-book](https://d2learn.github.io/d2ds) - [d2ds-video](https://courses.d2learn.org/d2ds_course.html) - [动画](videos) - [d2ds-code](dslings) - [dstruct](https://github.com/Sunrisepeak/dstruct) |
 
 ---
 
