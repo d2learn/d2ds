@@ -15,7 +15,7 @@ d2x = {
     private = {
         ---------- d2ds config
         -- 0: hard, 1: normal, 2: easy
-        d2ds_difficulty_level = 2
+        d2ds_difficulty_level = 1
     }
 }
 
